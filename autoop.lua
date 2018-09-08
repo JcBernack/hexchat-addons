@@ -4,7 +4,7 @@ local version = "1.0"
 
 hexchat.register(name, version, desc)
 
-local function isOp()
+local function is_op()
 	local nick = hexchat.get_info("nick")
 	for user in hexchat.iterate("users") do
 		if user.nick == nick then
@@ -19,7 +19,7 @@ local function handle_join(word, word_eol, event, attrs)
 	local nick = word[1]
 	--local channel = word[2]
 	-- give op to user if we can
-	if isOp() then
+	if is_op() then
 		hexchat.command("OP " .. nick)
 	end
 	-- pass on event unchanged
